@@ -18,7 +18,7 @@ public class Result
 
     public static Result Fail()
     {
-        return new Result(false);
+        return new Result(false, new List<string>(){"❌"});
     }
     public static Result Fail(string message)
     {
