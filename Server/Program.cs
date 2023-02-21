@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<MyDbContext>();
+builder.Services.AddScoped<IMyDbContext,MyDbContext>();
 
 var app = builder.Build();
 
