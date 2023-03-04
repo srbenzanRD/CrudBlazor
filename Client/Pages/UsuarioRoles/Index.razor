@@ -1,0 +1,29 @@
+@page "/roles"
+<h1>Roles</h1>
+@if(Roles != null)
+{
+    <ul>
+        @foreach (var rol in Roles)
+        {
+            <li>@rol.Nombre</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Cargando..</p>
+}
+
+@code
+{
+    public List<UsuarioRolRecord>? Roles { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await rolesManager.GetAsync();
+        if(response.Succeeded){
+            Roles = response.Items.ToList();
+        }
+    }
+}
+
+
