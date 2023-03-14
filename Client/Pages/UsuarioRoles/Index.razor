@@ -1,11 +1,12 @@
 @page "/roles"
 <h1>Roles</h1>
+<button class="btn btn-outline-primary" @onclick="Agregar">Agregar</button>
 @if(Roles != null)
 {
     <ul>
         @foreach (var rol in Roles)
         {
-            <li>@rol.Nombre</li>
+            <li>@rol.Nombre <span class="btn btn-outline-warning" @onclick="()=>Editar(rol.Id)">Editar</span> </li>
         }
     </ul>
 }
@@ -23,6 +24,15 @@ else
         if(response.Succeeded){
             Roles = response.Items.ToList();
         }
+    }
+
+    public void Agregar()
+    {
+        urlHelper.NavigateTo("/rol/crear",false);
+    }
+    public void Editar(int Id)
+    {
+        urlHelper.NavigateTo($"/rol/editar/{Id}",false);
     }
 }
 
